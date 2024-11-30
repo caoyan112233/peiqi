@@ -1,6 +1,9 @@
 package peiqi
 
-import "net/http"
+import (
+	"log"
+	"net/http"
+)
 
 type Mmweb struct {
 	Router      *Router
@@ -14,7 +17,10 @@ func Instance() *Mmweb {
 
 // 启动Mmweb框架
 func (m Mmweb) ListenAndServer(addr string) {
-	http.ListenAndServe(addr, m.Router)
+	log.Println("Listen :", addr)
+	if err := http.ListenAndServe(addr, m.Router); err != nil {
+		log.Fatalln(err)
+	}
 }
 
 // 路由组功能
@@ -25,4 +31,5 @@ func (r *Router) Group(prefix string) *RouterGroup {
 func (group *RouterGroup) HandleGroup(method, path string, handler HandlerFunc) {
 	fullpath := group.prefix + path
 	group.router.Handle(method, fullpath, handler)
+	log.Println("Method: ", method)
 }

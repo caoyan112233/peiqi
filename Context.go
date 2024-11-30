@@ -19,7 +19,7 @@ func (ctx *Context) Send(statuscode int, data interface{}) {
 	// 将响应头设置成application/json
 	ctx.Writer.Header().Set("Content-Type", "application/json")
 	ctx.Writer.WriteHeader(statuscode)
-	//将数据序列化成 JSON 格式
+	// 将数据序列化成 JSON 格式
 	jsonData, err := json.Marshal(data)
 	if err != nil {
 		http.Error(ctx.Writer, "序列化JSON数据失败", http.StatusInternalServerError)

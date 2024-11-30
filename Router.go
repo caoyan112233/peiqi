@@ -25,10 +25,11 @@ func (r *Router) Handle(method, path string, handler HandlerFunc) {
 }
 
 /*
-		ServeHTTP 实现了 :
-		type Handler interface {
-	    	ServeHTTP(w http.ResponseWriter, r *http.Request)
-		}
+ServeHTTP 实现了 :
+
+	type Handler interface {
+		ServeHTTP(w http.ResponseWriter, r *http.Request)
+	}
 */
 func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	context := NewContext(w, req)
