@@ -1,4 +1,4 @@
-package MyWeb
+package peiqi
 
 import "net/http"
 

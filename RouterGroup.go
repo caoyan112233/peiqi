@@ -1,4 +1,4 @@
-package MyWeb
+package peiqi
 
 type RouterGroup struct {
 	prefix string  // 前缀
